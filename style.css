@@ -1,0 +1,74 @@
+.ticket_tailor_event_list hr[data-ticket-tailor-date] {
+    margin: 0 0 1rem 0;
+    border-color: var(--wp--preset--color--ti-accent);
+}
+
+.ticket_tailor_event_list hr[data-ticket-tailor-date]::before {
+    display: block;
+    content: attr(data-ticket-tailor-date);
+    position: absolute;
+    transform: translateY(-50%);
+    background: white;
+    padding-right: 1rem;
+}
+
+.ticket_tailor_event {
+	padding: 1rem 1rem 2rem 1rem;
+}
+
+.ticket_tailor_event .ticket_tailor_event_title {
+	font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.ticket_tailor_event .ticket_tailor_event_body {
+	display: flex;
+	column-gap: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+	.ticket_tailor_event .ticket_tailor_event_body {
+		flex-direction: column-reverse;
+	}
+}
+
+.ticket_tailor_event .ticket_tailor_event_venue {
+	font-size: .8rem;
+	margin: .5rem 0;
+}
+
+.ticket_tailor_event .ticket_tailor_event_venue .postcode {
+	text-transform: upper-alpha;
+}
+
+.ticket_tailor_event .ticket_tailor_event_description {
+	font-size: 1rem;
+}
+
+.ticket_tailor_event .ticket_tailor_event_image {
+	align-content: center;
+	margin: auto;
+}
+
+.ticket_tailor_event .ticket_tailor_event_actions {
+	margin: 1rem 0;
+}
+
+.ticket_tailor_event .ticket_tailor_event_link {
+    line-height: 20px;
+    padding: 9px 15px;
+    min-height: 40px;
+    background: var(--wp--preset--color--ti-accent);
+    border: 0;
+    border-color: var(--wp--preset--color--ti-accent);
+    border-radius: 3px;
+    box-shadow: none;
+    color: var(--wp--preset--color--ti-fg-alt);
+    font-size: var(--wp--preset--font-size--normal);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.ticket_tailor_event .ticket_tailor_event_link:hover {
+    text-decoration: underline;
+}

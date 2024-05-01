@@ -1,3 +1,7 @@
+.ticket_tailor_event_list {
+	/* color: black; */
+}
+
 .ticket_tailor_event_list hr[data-ticket-tailor-date] {
     margin: 0 0 1rem 0;
     border-color: var(--wp--preset--color--ti-accent);
@@ -32,9 +36,16 @@
 	}
 }
 
+.ticket_tailor_event .ticket_tailor_event_time_range {
+	font-size: .8rem;
+	margin: .5rem 1rem .5rem 0;
+	display: inline-block;
+}
+
 .ticket_tailor_event .ticket_tailor_event_venue {
 	font-size: .8rem;
 	margin: .5rem 0;
+	display: inline-block;
 }
 
 .ticket_tailor_event .ticket_tailor_event_venue .postcode {
@@ -43,6 +54,10 @@
 
 .ticket_tailor_event .ticket_tailor_event_description {
 	font-size: 1rem;
+}
+
+.ticket_tailor_event .ticket_tailor_event_description.reduced p:not(:first-child) {
+	display: none;
 }
 
 .ticket_tailor_event .ticket_tailor_event_image {

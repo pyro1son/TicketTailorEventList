@@ -116,9 +116,9 @@ class TicketTailorEventsList {
 		);
 		
 		add_settings_field(
-			'show_full_description', // id
-			'Should show full description', // title
-			array( $this, 'show_full_description_callback' ), // callback
+			'show_compact_view', // id
+			'Show compact view', // title
+			array( $this, 'show_compact_view_callback' ), // callback
 			'ticket-tailor-events-list-admin', // page
 			'ticket_tailor_events_list_display_setting_section' // section
 		);
@@ -146,8 +146,8 @@ class TicketTailorEventsList {
 			$sanitary_values['hide_thumbnail'] = $input['hide_thumbnail'] == 'on' ? 1 : 0;
 		}
 		
-		if ( isset( $input['show_full_description'] ) ) {
-			$sanitary_values['show_full_description'] = $input['show_full_description'] == 'on' ? 1 : 0;
+		if ( isset( $input['show_compact_view'] ) ) {
+			$sanitary_values['show_compact_view'] = $input['show_compact_view'] == 'on' ? 1 : 0;
 		}
 		
 		return $sanitary_values;
@@ -171,10 +171,10 @@ class TicketTailorEventsList {
 		);
 	}
 	
-	public function show_full_description_callback() {
+	public function show_compact_view_callback() {
 		printf(
-			'<input class="regular-text" type="checkbox" name="ticket_tailor_events_list_option_name[show_full_description]" id="show_full_description" %s>',
-			isset( $this->ticket_tailor_events_list_options['show_full_description'] ) ? ( $this->ticket_tailor_events_list_options['show_full_description'] == 1 ? 'checked' : '' ) : ''
+			'<input class="regular-text" type="checkbox" name="ticket_tailor_events_list_option_name[show_compact_view]" id="show_compact_view" %s>',
+			isset( $this->ticket_tailor_events_list_options['show_compact_view'] ) ? ( $this->ticket_tailor_events_list_options['show_compact_view'] == 1 ? 'checked' : '' ) : ''
 		);
 	}
 	
@@ -223,14 +223,22 @@ class TicketTailorEventsList {
 				$content .= "<hr data-ticket-tailor-date='" . date_format(date_create($event['start']['date']),!empty($ticket_tailor_events_list_options['date_format']) ? $ticket_tailor_events_list_options['date_format'] : 'D d M') . "' data-ticket-date-group-" . date_format(date_create($event['start']['date']),'dno') . " />";
 				$content .= "<div class='ticket_tailor_event'>";
 				$content .= "<div class='ticket_tailor_event_title'>" . $event['name'] . "</div>";
-				if ($ticket_tailor_events_list_options['hide_time_range'] ?? 0 != 1) {
-					$content .= "<div class='ticket_tailor_event_time_range'>";
-					$content .= $event['start']['time'];
-					$content .= " to ";
-					$content .= $event['end']['time'];
-					$content .= "</div>";
+				if ($ticket_tailor_events_list_options['hide_time_range']  != 1) {
+					if ($event['start']['date'] == $event['end']['date']) {
+						$content .= "<div class='ticket_tailor_event_time_range'>";
+						$content .= $event['start']['time'];
+						$content .= " <span class='to'>to</span> ";
+						$content .= $event['end']['time'];
+						$content .= "</div>";
+					} else {
+						$content .= "<div class='ticket_tailor_event_time_range'>";
+						$content .= date_format(date_create($event['start']['iso']), 'd M @ H:i');
+						$content .= " <span class='to'>to</span> ";
+						$content .= date_format(date_create($event['end']['iso']), 'd M @ H:i');
+						$content .= "</div>";
+					}
 				}
-				if ($ticket_tailor_events_list_options['hide_venue'] ?? 0 != 1) {
+				if ($ticket_tailor_events_list_options['hide_venue']  != 1) {
 					$content .= "<div class='ticket_tailor_event_venue'>" . $event['venue']['name'];
 					if (!empty($event['venue']['postal_code'] )) {
 						$content .= ", <span class='postcode'>" . $event['venue']['postal_code'] . "</span>";
@@ -240,7 +248,7 @@ class TicketTailorEventsList {
 				$content .= "<div class='ticket_tailor_event_body'>";
 				$content .= "<div class='ticket_tailor_event_details'>";
 				$content .= "<div class='ticket_tailor_event_description";
-				if ($ticket_tailor_events_list_options['show_full_description'] ?? 0 != 1) {
+				if ($ticket_tailor_events_list_options['show_compact_view'] == 1) {
 					$content .= " reduced";
 				}
 				$content .= "'>";
@@ -251,8 +259,14 @@ class TicketTailorEventsList {
 				// }
 				$content .= "</div>";
 				$content .= "</div>";
-				if ($ticket_tailor_events_list_options['hide_thumbnail'] ?? 0 != 1) {
-					$content .= "<div class='ticket_tailor_event_image'><img src='" . str_replace('h_108,q_85,w_108','h_300,q_85,w_300',$event['images']['thumbnail']) . "' /></div>";
+				if ($ticket_tailor_events_list_options['hide_thumbnail'] != 1) {
+					$content .= "<div class='ticket_tailor_event_image'><img src='";
+					if ($ticket_tailor_events_list_options['show_compact_view'] == 1) {
+					 $content .=  $event['images']['thumbnail'];
+					 } else { 
+						$content .= str_replace('h_108,q_85,w_108','h_300,q_85,w_300',$event['images']['thumbnail']);
+					}
+					 $content .= "' /></div>";
 				}
 				$content .= "</div>";
 				$content .= "<div class='ticket_tailor_event_actions'>";

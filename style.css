@@ -42,6 +42,12 @@
 	display: inline-block;
 }
 
+.ticket_tailor_event .ticket_tailor_event_time_range .to {
+	font-size: 0.75rem;
+    font-style: italic;
+    margin: 0 .5rem;
+}
+
 .ticket_tailor_event .ticket_tailor_event_venue {
 	font-size: .8rem;
 	margin: .5rem 0;

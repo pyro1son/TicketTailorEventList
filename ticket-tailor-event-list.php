@@ -270,10 +270,16 @@ class TicketTailorEventsList {
 						$content .= "</div>";
 					}
 				}
-				if (($ticket_tailor_events_list_options['hide_venue'] ?? 0) != 1) {
-					$content .= "<div class='ticket_tailor_event_venue'><span class='dashicons dashicons-location'></span>" . $event['venue']['name'];
+				if (($ticket_tailor_events_list_options['hide_venue'] ?? 0) != 1 || (empty($event['venue']['postal_code']) && empty($event['venue']['name']))) {
+					$content .= "<div class='ticket_tailor_event_venue'><span class='dashicons dashicons-location'></span>";
+					if (!empty($event['venue']['name'])) {
+						$content .= $event['venue']['name'];
+					}
+					if (!empty($event['venue']['postal_code']) && !empty($event['venue']['name'])) {
+						$content .= ", ";
+					}
 					if (!empty($event['venue']['postal_code'] )) {
-						$content .= ", <span class='postcode'>" . $event['venue']['postal_code'] . "</span>";
+						$content .= "<span class='postcode'>" . $event['venue']['postal_code'] . "</span>";
 					}
 					$content .= "</div>";
 				}
@@ -299,7 +305,11 @@ class TicketTailorEventsList {
 				}
 				// $content .= "</div>";
 				$content .= "<div class='ticket_tailor_event_actions'>";
-				$content .= "<a class='ticket_tailor_event_link' target='_blank' href='" . $event['url'] . "'>" . $event['call_to_action'] . "</a>";
+				if	($event['tickets_available'] === false) {
+					$content .= "<span class='ticket_tailor_event_sold_out'>SOLD OUT</span>";
+				} else {
+					$content .= "<a class='ticket_tailor_event_link' target='_blank' href='" . $event['url'] . "'>" . $event['call_to_action'] . "</a>";
+				}
 				$content .= "</div>";
 				$content .= "</div>";
 			}

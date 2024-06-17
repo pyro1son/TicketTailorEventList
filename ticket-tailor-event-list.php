@@ -6,7 +6,7 @@
  * Version: 0.1
  * Text Domain: ticket-tailor-event-list
  * Author: Joshua Sampson
- * Author URI: 
+ * Author URI: https://buymeacoffee.com/pyro1son
  */
 class TicketTailorEventsList {
 	private $ticket_tailor_events_list_options;

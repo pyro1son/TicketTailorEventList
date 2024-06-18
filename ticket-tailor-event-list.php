@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Ticket Tailor - Event List
- * Plugin URI: 
+ * Plugin URI: https://pyro1son.github.io/TicketTailorEventList/
  * Description: Display content using a shortcode to insert in a page or post
  * Version: 0.1
  * Text Domain: ticket-tailor-event-list

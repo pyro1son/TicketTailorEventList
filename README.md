@@ -12,4 +12,6 @@ Alternative to using Ticket Tailors iframe. This uses their API to get a list of
 
 == Changelog ==
 
+= v1.0.1 =
+
 * Initial release

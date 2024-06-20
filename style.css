@@ -17,7 +17,7 @@
     content: attr(data-ticket-tailor-date);
     position: absolute;
     transform: translateY(-50%);
-    background: white;
+    background: var(--wp--preset--color--base);
     padding-right: 1rem;    
     font-weight: 600;
     margin-left: -0.1rem;
@@ -29,7 +29,7 @@
     content: "\f508";
     position: absolute;
     transform: translateY(-50%);
-    background: white;
+    background: var(--wp--preset--color--base);
     padding-right: 1rem;    
     font-weight: 500;
     margin-left: -0.1rem;

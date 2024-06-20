@@ -6,7 +6,7 @@ Donate link: https://buymeacoffee.com/pyro1son
 
 License: GPLv2 or later
 
-Stable tag: 6.5.4
+Stable tag: 1.0.1
 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

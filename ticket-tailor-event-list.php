@@ -271,7 +271,10 @@ class TicketTailorEventsList {
 					}
 				}
 				if (($ticket_tailor_events_list_options['hide_venue'] ?? 0) != 1 || (empty($event['venue']['postal_code']) && empty($event['venue']['name']))) {
-					$content .= "<div class='ticket_tailor_event_venue'><span class='dashicons dashicons-location'></span>";
+					$content .= "<div class='ticket_tailor_event_venue'>";
+					if (!empty($event['venue']['postal_code']) || !empty($event['venue']['name'])) {
+						$content .= "<span class='dashicons dashicons-location'></span>";
+					}
 					if (!empty($event['venue']['name'])) {
 						$content .= $event['venue']['name'];
 					}

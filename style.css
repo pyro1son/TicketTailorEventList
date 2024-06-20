@@ -7,17 +7,21 @@
     font-size: 1.5rem;
 }
 
+.ticket_tailor_event_list hr.dashicon[data-ticket-tailor-date] {
+    margin-left: 140px;
+}
+
 .ticket_tailor_event_list hr[data-ticket-tailor-date] {
     margin: 0 0 1rem 0;
     border-color: var(--wp--preset--color--ti-accent);
+    margin-left: 110px;
 }
 
 .ticket_tailor_event_list hr[data-ticket-tailor-date]::after {
     display: block;
     content: attr(data-ticket-tailor-date);
     position: absolute;
-    transform: translateY(-50%);
-    background: var(--wp--preset--color--base);
+    transform: translate(-110px, -50%);
     padding-right: 1rem;    
     font-weight: 600;
     margin-left: -0.1rem;
@@ -28,15 +32,14 @@
 	font-family: "dashicons";
     content: "\f508";
     position: absolute;
-    transform: translateY(-50%);
-    background: var(--wp--preset--color--base);
+    transform: translate(-140px, -50%);
     padding-right: 1rem;    
     font-weight: 500;
     margin-left: -0.1rem;
 }
 
 .ticket_tailor_event_list hr.dashicon[data-ticket-tailor-date]::after {
-    transform: translate(30px, -50%);
+    transform: translate(-110px, -50%);
 }
 
 

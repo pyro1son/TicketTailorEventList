@@ -84,6 +84,15 @@ class TicketTailorEventsList {
 		);
 		
 		add_settings_field(
+			'event_limit', // id
+			'Maximum number of events to display', // title
+			array( $this, 'event_limit_callback' ), // callback
+			'ticket-tailor-events-list-admin', // page
+			'ticket_tailor_events_list_display_setting_section' // section
+		);
+
+
+		add_settings_field(
 			'no_events_text', // id
 			'Message when no events returned', // title
 			array( $this, 'no_events_text_callback' ), // callback
@@ -138,6 +147,10 @@ class TicketTailorEventsList {
 			$sanitary_values['api_key_0'] = sanitize_text_field( $input['api_key_0'] );
 		}
 
+		if ( isset( $input['event_limit'] ) ) {
+			$sanitary_values['event_limit'] = sanitize_text_field( $input['event_limit'] );
+		}
+
 		if ( isset( $input['no_events_text'] ) ) {
 			$sanitary_values['no_events_text'] = sanitize_text_field( $input['no_events_text'] );
 		}
@@ -173,6 +186,13 @@ class TicketTailorEventsList {
 		printf(
 			'<input class="regular-text" type="text" name="ticket_tailor_events_list_option_name[api_key_0]" id="api_key_0" value="%s">',
 			isset( $this->ticket_tailor_events_list_options['api_key_0'] ) ? esc_attr( $this->ticket_tailor_events_list_options['api_key_0']) : ''
+		);
+	}
+
+	public function event_limit_callback() {
+		printf(
+			'<input class="regular-text" type="number" name="ticket_tailor_events_list_option_name[event_limit]" id="event_limit" value="%s">',
+			isset( $this->ticket_tailor_events_list_options['event_limit'] ) ? esc_attr( $this->ticket_tailor_events_list_options['event_limit']) : '0'
 		);
 	}
 
@@ -221,6 +241,9 @@ class TicketTailorEventsList {
     public function ticket_tailor_event_list_shortcode($args) {
         $ticket_tailor_events_list_options = get_option( 'ticket_tailor_events_list_option_name' );
         $tt_url = 'https://api.tickettailor.com/v1/events?status=published&start_at.gt=' . time();
+		if (!empty($ticket_tailor_events_list_options['event_limit']) && $ticket_tailor_events_list_options['event_limit'] > 0 ) {
+			$tt_url .= '&limit=' . $ticket_tailor_events_list_options['event_limit'];
+		}
         $response = wp_remote_get($tt_url, array(
             'headers' => array(
                 'Authorization' => 'Basic ' . base64_encode($ticket_tailor_events_list_options['api_key_0'] . ':')

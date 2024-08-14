@@ -259,13 +259,11 @@ class TTEL {
             return "ERROR";
         }
 
-        $events = json_decode(wp_remote_retrieve_body($response),true);
+        $events = json_decode(wp_remote_retrieve_body($response),true)['data'] ?? [];
 
         $content = "<div class='ticket_tailor_event_list' >";
-
-		usort($events['data'], fn($a, $b) => $a['start']['unix'] <=> $b['start']['unix']);
-		
-		if (count($events['data']) === 0) {
+			
+		if (count($events) === 0) {
 			$content .= "<div class='ticket_tailor_event_none'>";
 			if (!empty($ttel_options['no_events_text'])) {
 				$content .= $ttel_options['no_events_text'];
@@ -273,8 +271,9 @@ class TTEL {
 				$content .= "No events currently available";
 			}
 			$content .= "</div>";
-		} else {		
-			foreach($events['data'] as $event){
+		} else {	
+			usort($events, fn($a, $b) => $a['start']['unix'] <=> $b['start']['unix']);	
+			foreach($events as $event){
 				$content .= "<hr class='dashicon' data-ticket-tailor-date='" . date_format(date_create($event['start']['date']),!empty($ttel_options['date_format']) ? $ttel_options['date_format'] : 'D d M') . "' data-ticket-date-group-" . date_format(date_create($event['start']['date']),'dno') . " />";
 				$content .= "<div class='ticket_tailor_event";
 				if (array_key_exists('show_compact_view', $ttel_options) && $ttel_options['show_compact_view'] == 1) {

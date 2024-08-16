@@ -7,8 +7,8 @@
  * Text Domain: TicketTailorEventList-1.0.2
  * Author: Joshua Sampson
  * Author URI: https://buymeacoffee.com/pyro1son
- * Licence: GPLv2 or later
- * Licence URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;

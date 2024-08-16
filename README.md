@@ -8,7 +8,7 @@ Requires at least: 6.4.3
 
 Tested up to: 6.6.1
 
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 Requires PHP: 7.0
 
@@ -20,7 +20,7 @@ Alternative to using Ticket Tailors iframe.
 
 == Description ==
 
-Alternative to using Ticket Tailors iframe. This uses their API (https://api.tickettailor.com) to get a list of upcoming events and displays them in your site giving you greater customisation on how they are displayed.
+Alternative to using Ticket Tailors iframe. This uses their API (https://api.tickettailor.com) to get a list of upcoming events and displays them in your site giving you greater customization on how they are displayed.
 
 [Ticket Tailor Service Terms](https://www.tickettailor.com/legal/acceptable-use-policy)
 
@@ -33,3 +33,7 @@ Alternative to using Ticket Tailors iframe. This uses their API (https://api.tic
 = v1.0.2 =
 
 * UI fixes
+
+= v1.0.3 =
+
+* Plugin Guidelines

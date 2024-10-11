@@ -2,13 +2,13 @@
 
 Contributors: pyro1son
 
-Donate link: https://buymeacoffee.com/pyro1son [Terms](https://buymeacoffee.com/terms)
+Donate link: https://buymeacoffee.com/pyro1son
 
 Requires at least: 6.4.3
 
 Tested up to: 6.6.1
 
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 
 Requires PHP: 7.0
 
@@ -37,3 +37,7 @@ Alternative to using Ticket Tailors iframe. This uses their API (https://api.tic
 = v1.0.3 =
 
 * Plugin Guidelines
+
+= v1.0.4 =
+
+* Fix link

@@ -8,7 +8,7 @@ Requires at least: 6.4.3
 
 Tested up to: 6.6.1
 
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 
 Requires PHP: 7.0
 
@@ -41,3 +41,7 @@ Alternative to using Ticket Tailors iframe. This uses their API (https://api.tic
 = v1.0.4 =
 
 * Fix link
+
+= v1.0.5 =
+
+* Include Dashicons style

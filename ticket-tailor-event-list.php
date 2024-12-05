@@ -3,8 +3,8 @@
  * Plugin Name: Ticket Tailor - Event List
  * Plugin URI: https://pyro1son.github.io/TicketTailorEventList/
  * Description: Display content using a shortcode to insert in a page or post
- * Version: 1.0.4
- * Text Domain: TicketTailorEventList-1.0.4
+ * Version: 1.0.5
+ * Text Domain: TicketTailorEventList-1.0.5
  * Author: Joshua Sampson
  * Author URI: https://buymeacoffee.com/pyro1son
  * License: GPLv2 or later
@@ -27,7 +27,7 @@ class TTEL {
     public function ttel_init() {
         add_shortcode('tt_event_list', array( $this, 'ttel_shortcode') );
 
-        wp_register_style( 'ttel_style', plugins_url('style.css',__FILE__ ),[],'v1.0.4' );
+        wp_register_style( 'ttel_style', plugins_url('style.css',__FILE__ ),[],'v1.0.5' );
         wp_enqueue_style( 'ttel_style' );
 
 		wp_enqueue_style( 'dashicons' );

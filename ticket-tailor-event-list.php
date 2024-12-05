@@ -29,6 +29,8 @@ class TTEL {
 
         wp_register_style( 'ttel_style', plugins_url('style.css',__FILE__ ),[],'v1.0.4' );
         wp_enqueue_style( 'ttel_style' );
+
+		wp_enqueue_style( 'dashicons' );
     }
 
 	public function ttel_add_plugin_page() {
